@@ -1,34 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
-
 <?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.MenuBar?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="ru.wkn.object3d.controller.Controller"
-            prefHeight="400.0" prefWidth="600.0">
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="moveByX" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.wkn.object3d.controller.Controller">
 
     <children>
-        <Canvas fx:id="fxCanvas" height="439.0" width="475.0" layoutX="211.0" layoutY="43.0"/>
+        <Canvas fx:id="fxCanvas" height="431.0" layoutX="196.0" layoutY="36.0" width="513.0" />
         <MenuBar id="menuBar" prefWidth="720">
             <menus>
                 <Menu id="file" mnemonicParsing="false" text="Файл">
                     <items>
-                        <MenuItem id="itemSave" mnemonicParsing="false" onAction="#onActionSave" text="Сохранить проекцию"/>
-                        <MenuItem id="itemExit" mnemonicParsing="false" onAction="#onActionExit" text="Выход"/>
+                        <MenuItem id="itemSave" mnemonicParsing="false" onAction="#onActionSave" text="Сохранить проекцию" />
+                        <MenuItem id="itemExit" mnemonicParsing="false" onAction="#onActionExit" text="Выход" />
                     </items>
                 </Menu>
                 <Menu id="reference" mnemonicParsing="false" text="О программе">
                     <items>
-                        <MenuItem id="task" mnemonicParsing="false" onAction="#onActionTask" text="Задание"/>
-                        <MenuItem id="author" mnemonicParsing="false" onAction="#onActionAuthor" text="Об авторе"/>
+                        <MenuItem id="task" mnemonicParsing="false" onAction="#onActionTask" text="Задание" />
+                        <MenuItem id="author" mnemonicParsing="false" onAction="#onActionAuthor" text="Об авторе" />
                     </items>
                 </Menu>
             </menus>
+         <effect>
+            <DropShadow height="38.8" radius="9.2" spread="0.13" width="0.0" />
+         </effect>
         </MenuBar>
+      <Pane id="paneMove" layoutX="14.0" layoutY="46.0" prefHeight="116.0" prefWidth="181.0">
+         <children>
+            <Slider fx:id="sliderMoveByX" layoutX="21.0" layoutY="33.0" max="500.0" onDragDetected="#onDragDetectedMoveByX" onKeyPressed="#onKeyPressedMoveByX" onMouseClicked="#onClickedMoveByX" />
+            <Slider fx:id="sliderMoveByY" layoutX="21.0" layoutY="58.0" max="500.0" onDragDetected="#onDragDetectedMoveByY" onKeyPressed="#onKeyPressedMoveByY" onMouseClicked="#onClickedMoveByY" />
+            <Slider fx:id="sliderMoveByZ" layoutX="21.0" layoutY="88.0" max="500.0" onDragDetected="#onDragDetectedMoveByZ" onKeyPressed="#onKeyPressedMoveByZ" onMouseClicked="#onClickedMoveByZ" />
+            <Label id="labelMove" layoutX="21.0" layoutY="6.0" text="Перемещение по осям">
+               <font>
+                  <Font name="Times New Roman" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane id="paneTurn" layoutX="14.0" layoutY="174.0" prefHeight="125.0" prefWidth="181.0">
+         <children>
+            <Slider fx:id="sliderTurnByX" layoutX="21.0" layoutY="35.0" max="500.0" onDragDetected="#onDragDetectedTurnByX" onKeyPressed="#onKeyPressedTurnByX" onMouseClicked="#onClickedTurnByX" />
+            <Slider fx:id="sliderTurnByY" layoutX="21.0" layoutY="69.0" max="500.0" onDragDetected="#onDragDetectedTurnByY" onKeyPressed="#onKeyPressedTurnByY" onMouseClicked="#onClickedTurnByY" />
+            <Slider fx:id="sliderTurnByZ" layoutX="21.0" layoutY="97.0" max="500.0" onDragDetected="#onDragDetectedTurnByZ" onKeyPressed="#onKeyPressedTurnByZ" onMouseClicked="#onClickedTurnByZ" />
+            <Label id="labelTurn" layoutX="21.0" layoutY="6.0" text="Поворот вокруг осей">
+               <font>
+                  <Font name="Times New Roman" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane id="paneScale" layoutX="14.0" layoutY="316.0" prefHeight="69.0" prefWidth="181.0">
+         <children>
+            <Slider fx:id="sliderScale" layoutX="21.0" layoutY="35.0" max="500.0" onDragDetected="#onDragDetectedScale" onKeyPressed="#onKeyPressedScale" onMouseClicked="#onClickedScale" />
+            <Label id="labelScale" layoutX="21.0" layoutY="6.0" text="Масштаб">
+               <font>
+                  <Font name="Times New Roman" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
     </children>
+   <effect>
+      <Blend mode="MULTIPLY" />
+   </effect>
 
 </AnchorPane>

@@ -1,7 +1,7 @@
 package ru.wkn.object3d.model.picture.canvas;
 
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
+import ru.wkn.object3d.model.picture.object3d.object3dunit.pictureunit.pixelunit.Color;
 import ru.wkn.object3d.model.picture.object3d.object3dunit.pictureunit.Pixel;
 
 public class CanvasJavaFxImpl implements Canvas {
@@ -19,7 +19,7 @@ public class CanvasJavaFxImpl implements Canvas {
         graphicsContext.getPixelWriter().setColor(
                 pixel.getX(),
                 pixel.getY(),
-                Color.color(
+                javafx.scene.paint.Color.color(
                         pixel.getColor().getRed(),
                         pixel.getColor().getGreen(),
                         pixel.getColor().getBlue()
@@ -28,16 +28,13 @@ public class CanvasJavaFxImpl implements Canvas {
     }
 
     @Override
-    public void drawGray(Pixel pixel) {
-        graphicsContext.getPixelWriter().setColor(
-                pixel.getX(),
-                pixel.getY(),
-                Color.gray(pixel.getColor().getGray())
-        );
+    public void drawLine(int x1, int y1, int x2, int y2, Color color) {
+        this.graphicsContext.setFill(javafx.scene.paint.Color.color(color.getRed(), color.getGreen(), color.getBlue()));
+        this.graphicsContext.strokeLine(x1, y1, x2, y2);
     }
 
     @Override
     public void clearScene() {
-        graphicsContext.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        this.graphicsContext.clearRect(- this.canvas.getWidth() / 2, this.canvas.getHeight() / 2, this.canvas.getWidth() / 2, - this.canvas.getHeight() / 2);
     }
 }
