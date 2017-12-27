@@ -19,7 +19,6 @@ import ru.wkn.object3d.model.picture.object3d.editor3d.concreteeditor.Mover;
 import ru.wkn.object3d.model.picture.object3d.editor3d.concreteeditor.ScaleEditor;
 import ru.wkn.object3d.model.picture.object3d.editor3d.concreteeditor.Turner;
 import ru.wkn.object3d.model.picture.object3d.editor3d.vector.Vector;
-import ru.wkn.object3d.model.picture.object3d.object3dunit.VoxelImpl;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -57,7 +56,7 @@ public class Controller implements Initializable {
         this.graphicsContext = this.fxCanvas.getGraphicsContext2D();
         this.graphicsContext.translate(fxCanvas.getWidth() / 2, fxCanvas.getHeight() / 2);
         this.canvas = new CanvasJavaFxImpl(this.fxCanvas);
-        this.picture = new PictureImpl(new KinderSurprise(new VoxelImpl[31][31][31], 100));
+        this.picture = new PictureImpl(new KinderSurprise(31, 31, 31, 100));
         update(null);
     }
 
@@ -109,12 +108,6 @@ public class Controller implements Initializable {
         writeMessage("Об авторе", message.toString());
     }
 
-    /**
-     * onDragDetected
-     *
-     * @param dragEvent
-     */
-
     @FXML
     private void onDragDetectedMoveByX(MouseEvent dragEvent) {
         update(new Mover(picture.getVoxelsFor2D(), new Vector(this.sliderMoveByX.getValue(), 0, 0)));
@@ -150,12 +143,6 @@ public class Controller implements Initializable {
         update(new ScaleEditor(picture.getVoxelsFor2D(), new Vector(this.sliderScale.getValue(), this.sliderScale.getValue(), this.sliderScale.getValue())));
     }
 
-    /**
-     * onClicked
-     *
-     * @param dragEvent
-     */
-
     public void onClickedMoveByX(MouseEvent dragEvent) {
         update(new Mover(picture.getVoxelsFor2D(), new Vector(this.sliderMoveByX.getValue(), 0, 0)));
     }
@@ -184,12 +171,6 @@ public class Controller implements Initializable {
         update(new ScaleEditor(picture.getVoxelsFor2D(), new Vector(this.sliderScale.getValue(), this.sliderScale.getValue(), this.sliderScale.getValue())));
     }
 
-    /**
-     * onKeyPressed
-     *
-     * @param dragEvent
-     */
-
     public void onKeyPressedMoveByX(KeyEvent dragEvent) {
         update(new Mover(picture.getVoxelsFor2D(), new Vector(this.sliderMoveByX.getValue(), 0, 0)));
     }
@@ -215,6 +196,6 @@ public class Controller implements Initializable {
     }
 
     public void onKeyPressedScale(KeyEvent keyEvent) {
-        update(new Turner(picture.getVoxelsFor2D(), new Vector(this.sliderScale.getValue(), this.sliderScale.getValue(), this.sliderScale.getValue())));
+        update(new ScaleEditor(picture.getVoxelsFor2D(), new Vector(this.sliderScale.getValue(), this.sliderScale.getValue(), this.sliderScale.getValue())));
     }
 }
