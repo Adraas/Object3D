@@ -37,9 +37,9 @@
         </MenuBar>
       <Pane id="paneMove" layoutX="14.0" layoutY="46.0" prefHeight="116.0" prefWidth="181.0">
          <children>
-            <Slider fx:id="sliderMoveByX" layoutX="21.0" layoutY="33.0" max="500.0" onDragDetected="#onDragDetectedMoveByX" onKeyPressed="#onKeyPressedMoveByX" onMouseClicked="#onClickedMoveByX" />
-            <Slider fx:id="sliderMoveByY" layoutX="21.0" layoutY="58.0" max="500.0" onDragDetected="#onDragDetectedMoveByY" onKeyPressed="#onKeyPressedMoveByY" onMouseClicked="#onClickedMoveByY" />
-            <Slider fx:id="sliderMoveByZ" layoutX="21.0" layoutY="88.0" max="500.0" onDragDetected="#onDragDetectedMoveByZ" onKeyPressed="#onKeyPressedMoveByZ" onMouseClicked="#onClickedMoveByZ" />
+            <Slider fx:id="sliderMoveByX" blockIncrement="1.0" layoutX="21.0" layoutY="33.0" max="40.0" onDragDetected="#onDragDetectedMoveByX" onKeyPressed="#onKeyPressedMoveByX" onMouseClicked="#onClickedMoveByX" />
+            <Slider fx:id="sliderMoveByY" blockIncrement="1.0" layoutX="21.0" layoutY="58.0" max="40.0" onDragDetected="#onDragDetectedMoveByY" onKeyPressed="#onKeyPressedMoveByY" onMouseClicked="#onClickedMoveByY" />
+            <Slider fx:id="sliderMoveByZ" blockIncrement="1.0" layoutX="21.0" layoutY="88.0" max="40.0" onDragDetected="#onDragDetectedMoveByZ" onKeyPressed="#onKeyPressedMoveByZ" onMouseClicked="#onClickedMoveByZ" />
             <Label id="labelMove" layoutX="21.0" layoutY="6.0" text="Перемещение по осям">
                <font>
                   <Font name="Times New Roman" size="13.0" />
@@ -49,9 +49,9 @@
       </Pane>
       <Pane id="paneTurn" layoutX="14.0" layoutY="174.0" prefHeight="125.0" prefWidth="181.0">
          <children>
-            <Slider fx:id="sliderTurnByX" layoutX="21.0" layoutY="35.0" max="500.0" onDragDetected="#onDragDetectedTurnByX" onKeyPressed="#onKeyPressedTurnByX" onMouseClicked="#onClickedTurnByX" />
-            <Slider fx:id="sliderTurnByY" layoutX="21.0" layoutY="69.0" max="500.0" onDragDetected="#onDragDetectedTurnByY" onKeyPressed="#onKeyPressedTurnByY" onMouseClicked="#onClickedTurnByY" />
-            <Slider fx:id="sliderTurnByZ" layoutX="21.0" layoutY="97.0" max="500.0" onDragDetected="#onDragDetectedTurnByZ" onKeyPressed="#onKeyPressedTurnByZ" onMouseClicked="#onClickedTurnByZ" />
+            <Slider fx:id="sliderTurnByX" blockIncrement="1.0" layoutX="21.0" layoutY="35.0" max="40.0" onDragDetected="#onDragDetectedTurnByX" onKeyPressed="#onKeyPressedTurnByX" onMouseClicked="#onClickedTurnByX" />
+            <Slider fx:id="sliderTurnByY" blockIncrement="1.0" layoutX="21.0" layoutY="69.0" max="40.0" onDragDetected="#onDragDetectedTurnByY" onKeyPressed="#onKeyPressedTurnByY" onMouseClicked="#onClickedTurnByY" />
+            <Slider fx:id="sliderTurnByZ" blockIncrement="1.0" layoutX="21.0" layoutY="97.0" max="40.0" onDragDetected="#onDragDetectedTurnByZ" onKeyPressed="#onKeyPressedTurnByZ" onMouseClicked="#onClickedTurnByZ" />
             <Label id="labelTurn" layoutX="21.0" layoutY="6.0" text="Поворот вокруг осей">
                <font>
                   <Font name="Times New Roman" size="13.0" />
@@ -61,7 +61,7 @@
       </Pane>
       <Pane id="paneScale" layoutX="14.0" layoutY="316.0" prefHeight="69.0" prefWidth="181.0">
          <children>
-            <Slider fx:id="sliderScale" layoutX="21.0" layoutY="35.0" max="500.0" onDragDetected="#onDragDetectedScale" onKeyPressed="#onKeyPressedScale" onMouseClicked="#onClickedScale" />
+            <Slider fx:id="sliderScale" blockIncrement="0.1" layoutX="21.0" layoutY="35.0" max="2.0" min="1.0" onDragDetected="#onDragDetectedScale" onKeyPressed="#onKeyPressedScale" onMouseClicked="#onClickedScale" />
             <Label id="labelScale" layoutX="21.0" layoutY="6.0" text="Масштаб">
                <font>
                   <Font name="Times New Roman" size="13.0" />
