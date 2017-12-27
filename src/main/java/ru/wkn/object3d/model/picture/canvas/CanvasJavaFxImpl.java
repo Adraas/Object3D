@@ -35,6 +35,6 @@ public class CanvasJavaFxImpl implements Canvas {
 
     @Override
     public void clearScene() {
-        this.graphicsContext.clearRect(- this.canvas.getWidth() / 2, this.canvas.getHeight() / 2, this.canvas.getWidth() / 2, - this.canvas.getHeight() / 2);
+        this.graphicsContext.clearRect(- this.canvas.getWidth() / 2, - this.canvas.getHeight() / 2, this.canvas.getWidth(), this.canvas.getHeight());
     }
 }
