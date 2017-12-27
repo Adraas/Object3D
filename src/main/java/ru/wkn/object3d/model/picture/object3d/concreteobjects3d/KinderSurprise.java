@@ -12,8 +12,9 @@ public class KinderSurprise implements Object3D {
     private Voxel[][] voxelsFor2D;
     private int radius;
 
-    public KinderSurprise(Voxel[][][] voxels, int radius) {
-        this.voxels = voxels;
+    public KinderSurprise(int length, int width, int height, int radius) {
+        this.voxels = new VoxelImpl[length][width][height];
+        this.voxelsFor2D = new VoxelImpl[length][width];
         this.radius = radius;
     }
 
@@ -54,7 +55,6 @@ public class KinderSurprise implements Object3D {
     }
 
     private void draw() {
-        this.voxelsFor2D = new VoxelImpl[this.voxels.length][this.voxels[0].length];
         for (int i = 0; i < this.voxelsFor2D.length; i++) {
             for (int j = 0; j < this.voxelsFor2D[0].length; j++) {
                 double a = i * 12 * Math.PI / 180;
