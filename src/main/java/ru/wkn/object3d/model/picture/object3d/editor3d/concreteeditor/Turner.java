@@ -30,35 +30,30 @@ public class Turner implements Editor {
         double x = voxel.getPixel().getX();
         double y = voxel.getPixel().getY();
         double z = voxel.getZ();
-
         double degree = Math.PI / 180;
-
         double x0, y0 = y, z0 = z;
-        //поворот вокруг X
-        y = y0 * Math.cos(this.vector.getXCoefficient() * degree) - z0 * Math.sin(this.vector.getXCoefficient() * degree);
-        z = y0 * Math.sin(this.vector.getXCoefficient() * degree) + z0 * Math.cos(this.vector.getXCoefficient() * degree);
 
+        //rotation around the axis Ox
+        if (this.vector.getXCoefficient() != 0) {
+            y = y0 * Math.cos(this.vector.getXCoefficient() * degree) - z0 * Math.sin(this.vector.getXCoefficient() * degree);
+            z = y0 * Math.sin(this.vector.getXCoefficient() * degree) + z0 * Math.cos(this.vector.getXCoefficient() * degree);
+        }
         x0 = x;
         z0 = z;
-        //поворот вокруг Y
-        x = x0 * Math.cos(this.vector.getYCoefficient() * degree) + z0 * Math.sin(this.vector.getYCoefficient() * degree);
-        z = -x0 * Math.sin(this.vector.getYCoefficient() * degree) + z0 * Math.cos(this.vector.getYCoefficient() * degree);
 
+        //rotation around the axis Oy
+        if (this.vector.getYCoefficient() != 0) {
+            x = x0 * Math.cos(this.vector.getYCoefficient() * degree) + z0 * Math.sin(this.vector.getYCoefficient() * degree);
+            z = -x0 * Math.sin(this.vector.getYCoefficient() * degree) + z0 * Math.cos(this.vector.getYCoefficient() * degree);
+        }
         x0 = x;
         y0 = y;
-        //поворот вокруг Z
-        x = x0 * Math.cos(this.vector.getZCoefficient() * degree) - y0 * Math.sin(this.vector.getZCoefficient() * degree);
-        y = x0 * Math.sin(this.vector.getZCoefficient() * degree) + y0 * Math.cos(this.vector.getZCoefficient() * degree);
 
-        x0 = x;
-        y0 = y;
-        z0 = z;
-        //проецирование
-        double angleB = -45 * degree;
-        double angleA = -45 * degree;
-        x = x0 * Math.cos(angleA) + y0 * Math.sin(angleA);
-        y = -x0 * Math.sin(angleA) * Math.cos(angleB) + y0 * Math.cos(angleA) * Math.cos(angleB) + z0 * Math.sin(angleB);
-        z = x0 * Math.sin(angleA) * Math.sin(angleB) - y0 * Math.cos(angleA) * Math.sin(angleB) + z0 * Math.cos(angleB);
+        //rotation around the axis Oz
+        if (this.vector.getZCoefficient() != 0) {
+            x = x0 * Math.cos(this.vector.getZCoefficient() * degree) - y0 * Math.sin(this.vector.getZCoefficient() * degree);
+            y = x0 * Math.sin(this.vector.getZCoefficient() * degree) + y0 * Math.cos(this.vector.getZCoefficient() * degree);
+        }
         return new VoxelImpl(new PixelImpl((int) x, (int) y, new ColorImpl(0, 0, 0)), (int) z);
     }
 
