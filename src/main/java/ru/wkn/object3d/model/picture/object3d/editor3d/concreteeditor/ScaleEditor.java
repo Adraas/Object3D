@@ -30,9 +30,11 @@ public class ScaleEditor implements Editor {
         double x = voxel.getPixel().getX();
         double y = voxel.getPixel().getY();
         double z = voxel.getZ();
-        x = x * this.vector.getXCoefficient();
-        y = y * this.vector.getYCoefficient();
-        z = z * this.vector.getZCoefficient();
+        if ((this.vector.getXCoefficient() != 0) && (this.vector.getYCoefficient() != 0) && (this.vector.getZCoefficient() != 0)) {
+            x = x * this.vector.getXCoefficient();
+            y = y * this.vector.getYCoefficient();
+            z = z * this.vector.getZCoefficient();
+        }
         return new VoxelImpl(new PixelImpl((int) x, (int) y, new ColorImpl(0, 0, 0)), (int) z);
     }
 
