@@ -49,9 +49,9 @@
       </Pane>
       <Pane id="paneTurn" layoutX="14.0" layoutY="174.0" prefHeight="125.0" prefWidth="181.0">
          <children>
-            <Slider fx:id="sliderTurnByX" blockIncrement="1.0" layoutX="21.0" layoutY="35.0" max="40.0" onDragDetected="#onDragDetectedTurnByX" onKeyPressed="#onKeyPressedTurnByX" onMouseClicked="#onClickedTurnByX" />
-            <Slider fx:id="sliderTurnByY" blockIncrement="1.0" layoutX="21.0" layoutY="69.0" max="40.0" onDragDetected="#onDragDetectedTurnByY" onKeyPressed="#onKeyPressedTurnByY" onMouseClicked="#onClickedTurnByY" />
-            <Slider fx:id="sliderTurnByZ" blockIncrement="1.0" layoutX="21.0" layoutY="97.0" max="40.0" onDragDetected="#onDragDetectedTurnByZ" onKeyPressed="#onKeyPressedTurnByZ" onMouseClicked="#onClickedTurnByZ" />
+            <Slider fx:id="sliderTurnByX" blockIncrement="1.0" layoutX="21.0" layoutY="35.0" max="90.0" onDragDetected="#onDragDetectedTurnByX" onKeyPressed="#onKeyPressedTurnByX" onMouseClicked="#onClickedTurnByX" />
+            <Slider fx:id="sliderTurnByY" blockIncrement="1.0" layoutX="21.0" layoutY="69.0" max="90.0" onDragDetected="#onDragDetectedTurnByY" onKeyPressed="#onKeyPressedTurnByY" onMouseClicked="#onClickedTurnByY" />
+            <Slider fx:id="sliderTurnByZ" blockIncrement="1.0" layoutX="21.0" layoutY="97.0" max="90.0" onDragDetected="#onDragDetectedTurnByZ" onKeyPressed="#onKeyPressedTurnByZ" onMouseClicked="#onClickedTurnByZ" />
             <Label id="labelTurn" layoutX="21.0" layoutY="6.0" text="Поворот вокруг осей">
                <font>
                   <Font name="Times New Roman" size="13.0" />
