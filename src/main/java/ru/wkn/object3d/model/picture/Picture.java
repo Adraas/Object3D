@@ -12,6 +12,8 @@ public interface Picture extends Serializable {
 
     Voxel[][] getVoxelsFor2D();
 
+    Voxel[][][] getVoxels();
+
     void setVoxelsFor2D(Voxel[][] voxelsFor2D);
 
     void edit(Editor editor);

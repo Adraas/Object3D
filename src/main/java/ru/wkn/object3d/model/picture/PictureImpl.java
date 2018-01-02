@@ -67,6 +67,11 @@ public class PictureImpl implements Picture {
     }
 
     @Override
+    public Voxel[][][] getVoxels() {
+        return this.voxels;
+    }
+
+    @Override
     public void edit(Editor editor) {
         editor.edit();
     }

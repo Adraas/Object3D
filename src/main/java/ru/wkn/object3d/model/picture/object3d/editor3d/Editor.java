@@ -6,5 +6,7 @@ public interface Editor {
 
     void edit();
 
-    Voxel[][] getObject3D();
+    Voxel[][] getObject2D();
+
+    Voxel[][][] getObject3D();
 }

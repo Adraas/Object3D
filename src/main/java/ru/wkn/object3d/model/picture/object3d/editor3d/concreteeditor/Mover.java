@@ -9,19 +9,21 @@ import ru.wkn.object3d.model.picture.object3d.object3dunit.pictureunit.pixelunit
 
 public class Mover implements Editor {
 
-    private Voxel[][] voxels;
+    private Voxel[][] voxelsFor2D;
+    private Voxel[][][] voxels;
     private Vector vector;
 
-    public Mover(Voxel[][] voxels, Vector vector) {
+    public Mover(Voxel[][] voxelsFor2D, Voxel[][][] voxels, Vector vector) {
+        this.voxelsFor2D = voxelsFor2D;
         this.voxels = voxels;
         this.vector = vector;
     }
 
     @Override
     public void edit() {
-        for (int i = 0; i < this.voxels.length; i++) {
-            for (int j = 0; j < this.voxels[0].length; j++) {
-                this.voxels[i][j] = newVoxel(this.voxels[i][j]);
+        for (int i = 0; i < this.voxelsFor2D.length; i++) {
+            for (int j = 0; j < this.voxelsFor2D[0].length; j++) {
+                this.voxelsFor2D[i][j] = newVoxel(this.voxelsFor2D[i][j]);
             }
         }
     }
@@ -37,7 +39,12 @@ public class Mover implements Editor {
     }
 
     @Override
-    public Voxel[][] getObject3D() {
+    public Voxel[][] getObject2D() {
+        return this.voxelsFor2D;
+    }
+
+    @Override
+    public Voxel[][][] getObject3D() {
         return this.voxels;
     }
 }
