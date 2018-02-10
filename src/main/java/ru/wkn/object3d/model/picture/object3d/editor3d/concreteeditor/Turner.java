@@ -35,7 +35,6 @@ public class Turner implements Editor {
         double degree = Math.PI / 180;
         double x0, y0 = y, z0 = z;
 
-        //rotation around the axis Ox
         if (this.vector.getXCoefficient() != 0) {
             y = y0 * Math.cos(this.vector.getXCoefficient() * degree) - z0 * Math.sin(this.vector.getXCoefficient() * degree);
             z = y0 * Math.sin(this.vector.getXCoefficient() * degree) + z0 * Math.cos(this.vector.getXCoefficient() * degree);
@@ -43,7 +42,6 @@ public class Turner implements Editor {
         x0 = x;
         z0 = z;
 
-        //rotation around the axis Oy
         if (this.vector.getYCoefficient() != 0) {
             x = x0 * Math.cos(this.vector.getYCoefficient() * degree) + z0 * Math.sin(this.vector.getYCoefficient() * degree);
             z = -x0 * Math.sin(this.vector.getYCoefficient() * degree) + z0 * Math.cos(this.vector.getYCoefficient() * degree);
@@ -51,7 +49,6 @@ public class Turner implements Editor {
         x0 = x;
         y0 = y;
 
-        //rotation around the axis Oz
         if (this.vector.getZCoefficient() != 0) {
             x = x0 * Math.cos(this.vector.getZCoefficient() * degree) - y0 * Math.sin(this.vector.getZCoefficient() * degree);
             y = x0 * Math.sin(this.vector.getZCoefficient() * degree) + y0 * Math.cos(this.vector.getZCoefficient() * degree);
