@@ -16,16 +16,16 @@ public class PixelImpl implements Pixel {
 
     @Override
     public int getX() {
-        return this.x;
+        return x;
     }
 
     @Override
     public int getY() {
-        return this.y;
+        return y;
     }
 
     @Override
     public Color getColor() {
-        return this.color;
+        return color;
     }
 }

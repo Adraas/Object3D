@@ -18,8 +18,8 @@ public class PictureImpl implements Picture {
 
     @Override
     public void redraw(Canvas canvas) {
-        if (this.voxelsFor2D == null) {
-            this.voxelsFor2D = object3D.get2D();
+        if (voxelsFor2D == null) {
+            voxelsFor2D = object3D.get2D();
         }
         canvas.clearScene();
         for (int i = 0; i < voxelsFor2D.length - 1; i++) {
@@ -63,12 +63,12 @@ public class PictureImpl implements Picture {
 
     @Override
     public Voxel[][] getVoxelsFor2D() {
-        return this.voxelsFor2D;
+        return voxelsFor2D;
     }
 
     @Override
     public Voxel[][][] getVoxels() {
-        return this.voxels;
+        return voxels;
     }
 
     @Override

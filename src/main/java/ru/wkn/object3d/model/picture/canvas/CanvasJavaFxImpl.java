@@ -11,7 +11,7 @@ public class CanvasJavaFxImpl implements Canvas {
 
     public CanvasJavaFxImpl(javafx.scene.canvas.Canvas canvas) {
         this.canvas = canvas;
-        this.graphicsContext = canvas.getGraphicsContext2D();
+        graphicsContext = canvas.getGraphicsContext2D();
     }
 
     @Override
@@ -29,12 +29,12 @@ public class CanvasJavaFxImpl implements Canvas {
 
     @Override
     public void drawLine(int x1, int y1, int x2, int y2, Color color) {
-        this.graphicsContext.setFill(javafx.scene.paint.Color.color(color.getRed(), color.getGreen(), color.getBlue()));
-        this.graphicsContext.strokeLine(x1, y1, x2, y2);
+        graphicsContext.setFill(javafx.scene.paint.Color.color(color.getRed(), color.getGreen(), color.getBlue()));
+        graphicsContext.strokeLine(x1, y1, x2, y2);
     }
 
     @Override
     public void clearScene() {
-        this.graphicsContext.clearRect(- this.canvas.getWidth() / 2, - this.canvas.getHeight() / 2, this.canvas.getWidth(), this.canvas.getHeight());
+        graphicsContext.clearRect(- canvas.getWidth() / 2, - canvas.getHeight() / 2, canvas.getWidth(), canvas.getHeight());
     }
 }

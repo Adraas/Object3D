@@ -55,35 +55,35 @@ public class Controller implements Initializable {
     private double coefficientSliderScale;
 
     public Controller() {
-        this.fileChooser = new FileChooser();
+        fileChooser = new FileChooser();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.graphicsContext = this.fxCanvas.getGraphicsContext2D();
-        this.graphicsContext.translate(fxCanvas.getWidth() / 2, fxCanvas.getHeight() / 2);
-        this.canvas = new CanvasJavaFxImpl(this.fxCanvas);
-        this.picture = new PictureImpl(new KinderSurprise(31, 31, 31, 100));
+        graphicsContext = fxCanvas.getGraphicsContext2D();
+        graphicsContext.translate(fxCanvas.getWidth() / 2, fxCanvas.getHeight() / 2);
+        canvas = new CanvasJavaFxImpl(fxCanvas);
+        picture = new PictureImpl(new KinderSurprise(31, 31, 31, 100, (int) fxCanvas.getHeight(), (int) fxCanvas.getWidth()));
         update(null);
     }
 
     private void updateCoefficient() {
-        this.coefficientSliderMoveByX = this.sliderMoveByX.getValue();
-        this.coefficientSliderMoveByY = this.sliderMoveByY.getValue();
-        this.coefficientSliderMoveByZ = this.sliderMoveByZ.getValue();
-        this.coefficientSliderTurnByX = this.sliderTurnByX.getValue();
-        this.coefficientSliderTurnByY = this.sliderTurnByY.getValue();
-        this.coefficientSliderTurnByZ = this.sliderTurnByZ.getValue();
-        this.coefficientSliderScale = this.sliderScale.getValue();
+        coefficientSliderMoveByX = sliderMoveByX.getValue();
+        coefficientSliderMoveByY = sliderMoveByY.getValue();
+        coefficientSliderMoveByZ = sliderMoveByZ.getValue();
+        coefficientSliderTurnByX = sliderTurnByX.getValue();
+        coefficientSliderTurnByY = sliderTurnByY.getValue();
+        coefficientSliderTurnByZ = sliderTurnByZ.getValue();
+        coefficientSliderScale = sliderScale.getValue();
     }
 
     private void update(Editor editor) {
         if (editor != null) {
-            this.picture.edit(editor);
-            this.picture.setVoxelsFor2D(editor.getObject2D());
+            picture.edit(editor);
+            picture.setVoxelsFor2D(editor.getObject2D());
         }
         updateCoefficient();
-        this.picture.redraw(this.canvas);
+        picture.redraw(canvas);
     }
 
     @FXML
@@ -128,92 +128,92 @@ public class Controller implements Initializable {
 
     @FXML
     private void onDragDetectedMoveByX(MouseEvent dragEvent) {
-        update(new Mover(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(this.sliderMoveByX.getValue() - this.coefficientSliderMoveByX, 0, 0)));
+        update(new Mover(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(sliderMoveByX.getValue() - coefficientSliderMoveByX, 0, 0)));
     }
 
     @FXML
     private void onDragDetectedMoveByY(MouseEvent dragEvent) {
-        update(new Mover(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(0, this.sliderMoveByY.getValue() - this.coefficientSliderMoveByY, 0)));
+        update(new Mover(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(0, sliderMoveByY.getValue() - coefficientSliderMoveByY, 0)));
     }
 
     @FXML
     private void onDragDetectedMoveByZ(MouseEvent dragEvent) {
-        update(new Mover(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(0, 0, this.sliderMoveByZ.getValue() - this.coefficientSliderMoveByZ)));
+        update(new Mover(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(0, 0, sliderMoveByZ.getValue() - coefficientSliderMoveByZ)));
     }
 
     @FXML
     private void onDragDetectedTurnByX(MouseEvent dragEvent) {
-        update(new Turner(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(this.sliderTurnByX.getValue() - this.coefficientSliderTurnByX, 0, 0)));
+        update(new Turner(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(sliderTurnByX.getValue() - coefficientSliderTurnByX, 0, 0)));
     }
 
     @FXML
     private void onDragDetectedTurnByY(MouseEvent dragEvent) {
-        update(new Turner(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(0, this.sliderTurnByY.getValue() - this.coefficientSliderTurnByY, 0)));
+        update(new Turner(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(0, sliderTurnByY.getValue() - coefficientSliderTurnByY, 0)));
     }
 
     @FXML
     private void onDragDetectedTurnByZ(MouseEvent dragEvent) {
-        update(new Turner(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(0, 0, this.sliderTurnByZ.getValue() - this.coefficientSliderTurnByZ)));
+        update(new Turner(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(0, 0, sliderTurnByZ.getValue() - coefficientSliderTurnByZ)));
     }
 
     @FXML
     private void onDragDetectedScale(MouseEvent dragEvent) {
-        update(new ScaleEditor(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(this.sliderScale.getValue() - this.coefficientSliderScale, this.sliderScale.getValue() - this.coefficientSliderScale, this.sliderScale.getValue() - this.coefficientSliderScale)));
+        update(new ScaleEditor(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(sliderScale.getValue() / coefficientSliderScale, sliderScale.getValue() / coefficientSliderScale, sliderScale.getValue() / coefficientSliderScale)));
     }
 
     public void onClickedMoveByX(MouseEvent dragEvent) {
-        update(new Mover(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(this.sliderMoveByX.getValue() - this.coefficientSliderMoveByX, 0, 0)));
+        update(new Mover(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(sliderMoveByX.getValue() - coefficientSliderMoveByX, 0, 0)));
     }
 
     public void onClickedMoveByY(MouseEvent dragEvent) {
-        update(new Mover(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(0, this.sliderMoveByY.getValue() - this.coefficientSliderMoveByY, 0)));
+        update(new Mover(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(0, sliderMoveByY.getValue() - coefficientSliderMoveByY, 0)));
     }
 
     public void onClickedMoveByZ(MouseEvent dragEvent) {
-        update(new Mover(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(0, 0, this.sliderMoveByZ.getValue() - this.coefficientSliderMoveByZ)));
+        update(new Mover(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(0, 0, sliderMoveByZ.getValue() - coefficientSliderMoveByZ)));
     }
 
     public void onClickedTurnByX(MouseEvent dragEvent) {
-        update(new Turner(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(this.sliderTurnByX.getValue() - this.coefficientSliderTurnByX, 0, 0)));
+        update(new Turner(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(sliderTurnByX.getValue() - coefficientSliderTurnByX, 0, 0)));
     }
 
     public void onClickedTurnByY(MouseEvent dragEvent) {
-        update(new Turner(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(0, this.sliderTurnByY.getValue() - this.coefficientSliderTurnByY, 0)));
+        update(new Turner(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(0, sliderTurnByY.getValue() - coefficientSliderTurnByY, 0)));
     }
 
     public void onClickedTurnByZ(MouseEvent dragEvent) {
-        update(new Turner(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(0, 0, this.sliderTurnByZ.getValue() - this.coefficientSliderTurnByZ)));
+        update(new Turner(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(0, 0, sliderTurnByZ.getValue() - coefficientSliderTurnByZ)));
     }
 
     public void onClickedScale(MouseEvent dragEvent) {
-        update(new ScaleEditor(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(this.sliderScale.getValue() - this.coefficientSliderScale, this.sliderScale.getValue() - this.coefficientSliderScale, this.sliderScale.getValue() - this.coefficientSliderScale)));
+        update(new ScaleEditor(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(sliderScale.getValue() / coefficientSliderScale, sliderScale.getValue() / coefficientSliderScale, sliderScale.getValue() / coefficientSliderScale)));
     }
 
     public void onKeyPressedMoveByX(KeyEvent dragEvent) {
-        update(new Mover(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(this.sliderMoveByX.getValue() - this.coefficientSliderMoveByX, 0, 0)));
+        update(new Mover(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(sliderMoveByX.getValue() - coefficientSliderMoveByX, 0, 0)));
     }
 
     public void onKeyPressedMoveByY(KeyEvent dragEvent) {
-        update(new Mover(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(0, this.sliderMoveByY.getValue() - this.coefficientSliderMoveByY, 0)));
+        update(new Mover(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(0, sliderMoveByY.getValue() - coefficientSliderMoveByY, 0)));
     }
 
     public void onKeyPressedMoveByZ(KeyEvent dragEvent) {
-        update(new Mover(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(0, 0, this.sliderMoveByZ.getValue() - this.coefficientSliderMoveByZ)));
+        update(new Mover(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(0, 0, sliderMoveByZ.getValue() - coefficientSliderMoveByZ)));
     }
 
     public void onKeyPressedTurnByX(KeyEvent keyEvent) {
-        update(new Turner(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(this.sliderTurnByX.getValue() - this.coefficientSliderTurnByX, 0, 0)));
+        update(new Turner(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(sliderTurnByX.getValue() - coefficientSliderTurnByX, 0, 0)));
     }
 
     public void onKeyPressedTurnByY(KeyEvent dragEvent) {
-        update(new Turner(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(0, this.sliderTurnByY.getValue() - this.coefficientSliderTurnByY, 0)));
+        update(new Turner(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(0, sliderTurnByY.getValue() - coefficientSliderTurnByY, 0)));
     }
 
     public void onKeyPressedTurnByZ(KeyEvent dragEvent) {
-        update(new Turner(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(0, 0, this.sliderTurnByZ.getValue() - this.coefficientSliderTurnByZ)));
+        update(new Turner(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(0, 0, sliderTurnByZ.getValue() - coefficientSliderTurnByZ)));
     }
 
     public void onKeyPressedScale(KeyEvent keyEvent) {
-        update(new ScaleEditor(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(this.sliderScale.getValue() - this.coefficientSliderScale, this.sliderScale.getValue() - this.coefficientSliderScale, this.sliderScale.getValue() - this.coefficientSliderScale)));
+        update(new ScaleEditor(picture.getVoxelsFor2D(), picture.getVoxels(), new Vector(sliderScale.getValue() / coefficientSliderScale, sliderScale.getValue() / coefficientSliderScale, sliderScale.getValue() / coefficientSliderScale)));
     }
 }

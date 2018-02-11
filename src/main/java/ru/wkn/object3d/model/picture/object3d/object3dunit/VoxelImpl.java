@@ -14,11 +14,11 @@ public class VoxelImpl implements Voxel {
 
     @Override
     public Pixel getPixel() {
-        return this.pixel;
+        return pixel;
     }
 
     @Override
     public int getZ() {
-        return this.z;
+        return z;
     }
 }

@@ -21,9 +21,9 @@ public class Turner implements Editor {
 
     @Override
     public void edit() {
-        for (int i = 0; i < this.voxelsFor2D.length; i++) {
-            for (int j = 0; j < this.voxelsFor2D[0].length; j++) {
-                this.voxelsFor2D[i][j] = newVoxel(this.voxelsFor2D[i][j]);
+        for (int i = 0; i < voxelsFor2D.length; i++) {
+            for (int j = 0; j < voxelsFor2D[0].length; j++) {
+                voxelsFor2D[i][j] = newVoxel(voxelsFor2D[i][j]);
             }
         }
     }
@@ -33,36 +33,39 @@ public class Turner implements Editor {
         double y = voxel.getPixel().getY();
         double z = voxel.getZ();
         double degree = Math.PI / 180;
+
         double x0, y0 = y, z0 = z;
 
-        if (this.vector.getXCoefficient() != 0) {
-            y = y0 * Math.cos(this.vector.getXCoefficient() * degree) - z0 * Math.sin(this.vector.getXCoefficient() * degree);
-            z = y0 * Math.sin(this.vector.getXCoefficient() * degree) + z0 * Math.cos(this.vector.getXCoefficient() * degree);
+        if (vector.getXCoefficient() != 0) {
+            y = y0 * Math.cos(vector.getXCoefficient() * degree) - z0 * Math.sin(vector.getXCoefficient() * degree);
+            z = y0 * Math.sin(vector.getXCoefficient() * degree) + z0 * Math.cos(vector.getXCoefficient() * degree);
         }
+
         x0 = x;
         z0 = z;
 
-        if (this.vector.getYCoefficient() != 0) {
-            x = x0 * Math.cos(this.vector.getYCoefficient() * degree) + z0 * Math.sin(this.vector.getYCoefficient() * degree);
-            z = -x0 * Math.sin(this.vector.getYCoefficient() * degree) + z0 * Math.cos(this.vector.getYCoefficient() * degree);
+        if (vector.getYCoefficient() != 0) {
+            x = x0 * Math.cos(vector.getYCoefficient() * degree) + z0 * Math.sin(vector.getYCoefficient() * degree);
+            z = -x0 * Math.sin(vector.getYCoefficient() * degree) + z0 * Math.cos(vector.getYCoefficient() * degree);
         }
+
         x0 = x;
         y0 = y;
 
-        if (this.vector.getZCoefficient() != 0) {
-            x = x0 * Math.cos(this.vector.getZCoefficient() * degree) - y0 * Math.sin(this.vector.getZCoefficient() * degree);
-            y = x0 * Math.sin(this.vector.getZCoefficient() * degree) + y0 * Math.cos(this.vector.getZCoefficient() * degree);
+        if (vector.getZCoefficient() != 0) {
+            x = x0 * Math.cos(vector.getZCoefficient() * degree) - y0 * Math.sin(vector.getZCoefficient() * degree);
+            y = x0 * Math.sin(vector.getZCoefficient() * degree) + y0 * Math.cos(vector.getZCoefficient() * degree);
         }
         return new VoxelImpl(new PixelImpl((int) x, (int) y, new ColorImpl(0, 0, 0)), (int) z);
     }
 
     @Override
     public Voxel[][] getObject2D() {
-        return this.voxelsFor2D;
+        return voxelsFor2D;
     }
 
     @Override
     public Voxel[][][] getObject3D() {
-        return this.voxels;
+        return voxels;
     }
 }

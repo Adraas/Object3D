@@ -21,9 +21,9 @@ public class ScaleEditor implements Editor {
 
     @Override
     public void edit() {
-        for (int i = 0; i < this.voxelsFor2D.length; i++) {
-            for (int j = 0; j < this.voxelsFor2D[0].length; j++) {
-                this.voxelsFor2D[i][j] = newVoxel(this.voxelsFor2D[i][j]);
+        for (int i = 0; i < voxelsFor2D.length; i++) {
+            for (int j = 0; j < voxelsFor2D[0].length; j++) {
+                voxelsFor2D[i][j] = newVoxel(voxelsFor2D[i][j]);
             }
         }
     }
@@ -32,21 +32,21 @@ public class ScaleEditor implements Editor {
         double x = voxel.getPixel().getX();
         double y = voxel.getPixel().getY();
         double z = voxel.getZ();
-        if ((this.vector.getXCoefficient() != 0) && (this.vector.getYCoefficient() != 0) && (this.vector.getZCoefficient() != 0)) {
-            x = x * this.vector.getXCoefficient();
-            y = y * this.vector.getYCoefficient();
-            z = z * this.vector.getZCoefficient();
+        if ((vector.getXCoefficient() != 0) && (vector.getYCoefficient() != 0) && (vector.getZCoefficient() != 0)) {
+            x = x * vector.getXCoefficient();
+            y = y * vector.getYCoefficient();
+            z = z * vector.getZCoefficient();
         }
         return new VoxelImpl(new PixelImpl((int) x, (int) y, new ColorImpl(0, 0, 0)), (int) z);
     }
 
     @Override
     public Voxel[][] getObject2D() {
-        return this.voxelsFor2D;
+        return voxelsFor2D;
     }
 
     @Override
     public Voxel[][][] getObject3D() {
-        return this.voxels;
+        return voxels;
     }
 }
