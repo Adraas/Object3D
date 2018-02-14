@@ -17,8 +17,8 @@ public class CanvasJavaFxImpl implements Canvas {
     @Override
     public void draw(Pixel pixel) {
         graphicsContext.getPixelWriter().setColor(
-                pixel.getX(),
-                pixel.getY(),
+                (int)pixel.getX(),
+                (int)pixel.getY(),
                 javafx.scene.paint.Color.color(
                         pixel.getColor().getRed(),
                         pixel.getColor().getGreen(),
@@ -28,7 +28,7 @@ public class CanvasJavaFxImpl implements Canvas {
     }
 
     @Override
-    public void drawLine(int x1, int y1, int x2, int y2, Color color) {
+    public void drawLine(double x1, double y1, double x2, double y2, Color color) {
         graphicsContext.setFill(javafx.scene.paint.Color.color(color.getRed(), color.getGreen(), color.getBlue()));
         graphicsContext.strokeLine(x1, y1, x2, y2);
     }

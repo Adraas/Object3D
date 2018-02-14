@@ -37,7 +37,7 @@ public class ScaleEditor implements Editor {
             y = y * vector.getYCoefficient();
             z = z * vector.getZCoefficient();
         }
-        return new VoxelImpl(new PixelImpl((int) x, (int) y, new ColorImpl(0, 0, 0)), (int) z);
+        return new VoxelImpl(new PixelImpl(x, y, new ColorImpl(0, 0, 0)), z);
     }
 
     @Override

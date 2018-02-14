@@ -4,9 +4,9 @@ import ru.wkn.object3d.model.picture.object3d.object3dunit.pictureunit.pixelunit
 
 public interface Pixel {
 
-    int getX();
+    double getX();
 
-    int getY();
+    double getY();
 
     Color getColor();
 }

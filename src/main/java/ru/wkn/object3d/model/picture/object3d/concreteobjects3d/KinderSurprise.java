@@ -10,13 +10,13 @@ public class KinderSurprise implements Object3D {
 
     private Voxel[][][] voxels;
     private Voxel[][] voxelsFor2D;
-    private int radius;
-    private int height;
-    private int width;
+    private double radius;
+    private double height;
+    private double width;
 
-    public KinderSurprise(int axisY, int axisX, int axisZ, int radius, int height, int width) {
-        this.voxels = new VoxelImpl[axisY][axisX][axisZ];
-        this.voxelsFor2D = new VoxelImpl[axisY][axisX];
+    public KinderSurprise(double axisY, double axisX, double axisZ, double radius, double height, double width) {
+        this.voxels = new VoxelImpl[(int)axisY][(int)axisX][(int)axisZ];
+        this.voxelsFor2D = new VoxelImpl[(int)axisY][(int)axisX];
         this.radius = radius;
         this.height = height;
         this.width = width;

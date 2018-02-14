@@ -6,5 +6,5 @@ public interface Voxel {
 
     Pixel getPixel();
 
-    int getZ();
+    double getZ();
 }

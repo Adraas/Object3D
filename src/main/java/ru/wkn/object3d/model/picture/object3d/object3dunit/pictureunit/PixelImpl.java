@@ -4,23 +4,23 @@ import ru.wkn.object3d.model.picture.object3d.object3dunit.pictureunit.pixelunit
 
 public class PixelImpl implements Pixel {
 
-    private int x;
-    private int y;
+    private double x;
+    private double y;
     private Color color;
 
-    public PixelImpl(int x, int y, Color color) {
+    public PixelImpl(double x, double y, Color color) {
         this.x = x;
         this.y = y;
         this.color = color;
     }
 
     @Override
-    public int getX() {
+    public double getX() {
         return x;
     }
 
     @Override
-    public int getY() {
+    public double getY() {
         return y;
     }
 

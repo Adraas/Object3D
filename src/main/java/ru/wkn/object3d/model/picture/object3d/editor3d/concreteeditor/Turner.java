@@ -56,7 +56,7 @@ public class Turner implements Editor {
             x = x0 * Math.cos(vector.getZCoefficient() * degree) - y0 * Math.sin(vector.getZCoefficient() * degree);
             y = x0 * Math.sin(vector.getZCoefficient() * degree) + y0 * Math.cos(vector.getZCoefficient() * degree);
         }
-        return new VoxelImpl(new PixelImpl((int) x, (int) y, new ColorImpl(0, 0, 0)), (int) z);
+        return new VoxelImpl(new PixelImpl(x, y, new ColorImpl(0, 0, 0)), z);
     }
 
     @Override

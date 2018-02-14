@@ -5,9 +5,9 @@ import ru.wkn.object3d.model.picture.object3d.object3dunit.pictureunit.Pixel;
 public class VoxelImpl implements Voxel {
 
     private Pixel pixel;
-    private int z;
+    private double z;
 
-    public VoxelImpl(Pixel pixel, int z) {
+    public VoxelImpl(Pixel pixel, double z) {
         this.pixel = pixel;
         this.z = z;
     }
@@ -18,7 +18,7 @@ public class VoxelImpl implements Voxel {
     }
 
     @Override
-    public int getZ() {
+    public double getZ() {
         return z;
     }
 }

@@ -7,7 +7,7 @@ public interface Canvas {
 
     void draw(Pixel pixel);
 
-    void drawLine(int x1, int y1, int x2, int y2, Color color);
+    void drawLine(double x1, double y1, double x2, double y2, Color color);
 
     void clearScene();
 }
